@@ -12,7 +12,7 @@ const Home = () => {
 
     let history = useHistory();
 
-    const [email, setEmial] = useState('')
+    const [email, setEmial] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
 
