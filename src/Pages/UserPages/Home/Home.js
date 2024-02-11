@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -10,7 +11,7 @@ import MainLoading from '../../../Component/MainLoading/MainLoading';
 
 const Home = () => {
 
-    let history = useHistory();
+    const navigate = useNavigate();
 
     const [email, setEmial] = useState('');
     const [password, setPassword] = useState('');
@@ -29,9 +30,9 @@ const Home = () => {
                     .then(result => {
                         if (result[0]?.UserID) {
                             alert('Login');
-                            // setPassword('');
-                            // setEmial('');
-                            history.push("/AddProducts");
+                            setPassword('');
+                            setEmial('');
+                            navigate("/AddProducts")
                         } else {
                             alert('not Login')
                         }

@@ -1,24 +1,24 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, } from "react-router-dom";
 
 //Pages
 import { Home, ProductPage, AddProducts } from '../Pages/UserPages'
 
 const MainRoutes = () => {
+
+    const router = createBrowserRouter(
+        createRoutesFromElements(
+            <Route path="/" ErrorBoundary={() => <h1>error found</h1>}>
+                <Route path="" element={<Home />} />
+                <Route path="ProductPage" element={<ProductPage />} />
+                <Route path="AddProducts" element={<AddProducts />} />
+            </Route>
+        )
+    );
+
+
     return (
-        <Router>
-            <Switch>
-                <Route exact path="/">
-                    <Home />
-                </Route>
-                <Route path="/ProductPage">
-                    <ProductPage />
-                </Route>
-                <Route path="/AddProducts">
-                    <AddProducts />
-                </Route>
-            </Switch>
-        </Router>
+        <RouterProvider router={router} />
     )
 }
 
